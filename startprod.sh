@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DOMAIN="microcorelabs.com.br"
+FRONTEND_DOMAIN="sigepx.mpac.mp.br"
+BACKEND_DOMAIN="sigepauthx.mpac.mp.br"
 ENV_FILE=".env.prod"
 COMPOSE_FILE="docker-compose.prod.yml"
 
@@ -27,7 +28,8 @@ random_secret() {
 
 if [ ! -f "$ENV_FILE" ]; then
   cat > "$ENV_FILE" <<EOF
-DOMAIN=$DOMAIN
+FRONTEND_DOMAIN=$FRONTEND_DOMAIN
+BACKEND_DOMAIN=$BACKEND_DOMAIN
 MYSQL_DATABASE=mural_comunitario
 MYSQL_USER=mural_user
 MYSQL_PASSWORD=$(random_secret)
@@ -37,7 +39,7 @@ EOF
   echo "Arquivo $ENV_FILE criado com senhas aleatorias."
 fi
 
-echo "Subindo producao para https://$DOMAIN ..."
+echo "Subindo producao para https://$FRONTEND_DOMAIN ..."
 docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" up -d --build
 
 echo
@@ -45,4 +47,7 @@ echo "Pronto. Verifique os containers com:"
 echo "  docker compose --env-file $ENV_FILE -f $COMPOSE_FILE ps"
 echo
 echo "Acesse:"
-echo "  https://$DOMAIN"
+echo "  https://$FRONTEND_DOMAIN"
+echo
+echo "API:"
+echo "  https://$BACKEND_DOMAIN/api/comunicados"

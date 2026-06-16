@@ -69,8 +69,8 @@ Pre-requisitos no servidor:
 
 - Docker instalado
 - Docker Compose habilitado
-- DNS `microcorelabs.com.br` apontando para o IP publico do servidor
-- Portas 80 e 443 liberadas no firewall
+- DNS `sigepx.mpac.mp.br` e `sigepauthx.mpac.mp.br` apontando para o Traefik
+- Traefik em execucao na rede Docker externa `proxy`
 
 Para subir a aplicacao em producao:
 
@@ -78,12 +78,18 @@ Para subir a aplicacao em producao:
 ./startprod.sh
 ```
 
-Esse comando cria automaticamente o arquivo `.env.prod` com senhas aleatorias, compila as imagens, sobe MySQL, backend, frontend estatico e Caddy como proxy reverso HTTPS.
+Esse comando cria automaticamente o arquivo `.env.prod` com senhas aleatorias, compila as imagens, sobe MySQL, backend e frontend estatico com labels para o Traefik.
 
 Depois acesse:
 
 ```text
-https://microcorelabs.com.br
+https://sigepx.mpac.mp.br
+```
+
+API:
+
+```text
+https://sigepauthx.mpac.mp.br/api/comunicados
 ```
 
 Para ver o estado dos containers:
