@@ -63,6 +63,41 @@ Para encerrar os containers:
 docker compose down
 ```
 
+## Como subir em producao
+
+Pre-requisitos no servidor:
+
+- Docker instalado
+- Docker Compose habilitado
+- DNS `microcorelabs.com.br` apontando para o IP publico do servidor
+- Portas 80 e 443 liberadas no firewall
+
+Para subir a aplicacao em producao:
+
+```bash
+./startprod.sh
+```
+
+Esse comando cria automaticamente o arquivo `.env.prod` com senhas aleatorias, compila as imagens, sobe MySQL, backend, frontend estatico e Caddy como proxy reverso HTTPS.
+
+Depois acesse:
+
+```text
+https://microcorelabs.com.br
+```
+
+Para ver o estado dos containers:
+
+```bash
+docker compose --env-file .env.prod -f docker-compose.prod.yml ps
+```
+
+Para parar a producao sem apagar dados:
+
+```bash
+docker compose --env-file .env.prod -f docker-compose.prod.yml down
+```
+
 ## Como apagar os dados do banco
 
 Para remover os containers, a rede e tambem o volume persistente do MySQL:
