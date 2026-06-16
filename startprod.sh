@@ -39,6 +39,16 @@ EOF
   echo "Arquivo $ENV_FILE criado com senhas aleatorias."
 fi
 
+if ! grep -q '^FRONTEND_DOMAIN=' "$ENV_FILE"; then
+  echo "FRONTEND_DOMAIN=$FRONTEND_DOMAIN" >> "$ENV_FILE"
+  echo "Variavel FRONTEND_DOMAIN adicionada em $ENV_FILE."
+fi
+
+if ! grep -q '^BACKEND_DOMAIN=' "$ENV_FILE"; then
+  echo "BACKEND_DOMAIN=$BACKEND_DOMAIN" >> "$ENV_FILE"
+  echo "Variavel BACKEND_DOMAIN adicionada em $ENV_FILE."
+fi
+
 echo "Subindo producao para https://$FRONTEND_DOMAIN ..."
 docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" up -d --build --remove-orphans --force-recreate
 
