@@ -17,7 +17,9 @@ services:
       retries: 10
       start_period: 30s
     networks:
-      - mural_prod_network
+      mural_prod_network:
+        aliases:
+          - mysql
 
   backend:
     build:
@@ -35,8 +37,8 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       APP_CORS_ALLOWED_ORIGINS: https://${FRONTEND_DOMAIN},http://${FRONTEND_DOMAIN}
     networks:
-      - mural_prod_network
-      - proxy
+      mural_prod_network:
+      proxy:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"

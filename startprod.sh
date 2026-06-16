@@ -40,7 +40,7 @@ EOF
 fi
 
 echo "Subindo producao para https://$FRONTEND_DOMAIN ..."
-docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" up -d --build
+docker compose --env-file "$ENV_FILE" -f "$COMPOSE_FILE" up -d --build --remove-orphans --force-recreate
 
 echo
 echo "Pronto. Verifique os containers com:"
