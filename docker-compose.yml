@@ -1,0 +1,54 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mural_mysql
+    environment:
+      MYSQL_DATABASE: mural_comunitario
+      MYSQL_USER: mural_user
+      MYSQL_PASSWORD: mural_pass
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    networks:
+      - mural_network
+
+  backend:
+    build: ./backend
+    container_name: mural_backend
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mural_comunitario?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: mural_user
+      SPRING_DATASOURCE_PASSWORD: mural_pass
+    ports:
+      - "8081:8080"
+    networks:
+      - mural_network
+
+  frontend:
+    build: ./frontend
+    container_name: mural_frontend
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://localhost:8081/api
+    ports:
+      - "5173:5173"
+    networks:
+      - mural_network
+
+networks:
+  mural_network:
+
+volumes:
+  mysql_data:

@@ -1,0 +1,455 @@
+:root {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+  background:
+    radial-gradient(circle at top left, rgba(219, 234, 254, 0.8), transparent 28%),
+    linear-gradient(180deg, #f8fafc 0%, #edf4fb 100%);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.85rem 1.25rem;
+  cursor: pointer;
+  background: #2563eb;
+  color: #ffffff;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.16);
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+button.secondary {
+  background: #e2e8f0;
+  color: #1e3a5f;
+  box-shadow: none;
+}
+
+button.danger {
+  background: #dc2626;
+  box-shadow: 0 10px 20px rgba(220, 38, 38, 0.16);
+}
+
+.page-shell {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.hero {
+  max-width: 1200px;
+  margin: 0 auto 1.25rem;
+  padding: 2rem;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #0f2f57 0%, #1d4f91 55%, #5b8fd1 100%);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: flex-end;
+  box-shadow: 0 22px 40px rgba(15, 47, 87, 0.22);
+}
+
+.hero-copy-block {
+  max-width: 760px;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  opacity: 0.9;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.hero-copy {
+  margin: 0.75rem 0 0;
+  font-size: 1.08rem;
+}
+
+.hero-badge {
+  min-width: 180px;
+  padding: 1rem 1.25rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  text-align: center;
+}
+
+.hero-badge span {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.hero-badge small {
+  font-size: 0.92rem;
+  opacity: 0.95;
+}
+
+.summary-grid {
+  max-width: 1200px;
+  margin: 0 auto 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.summary-card {
+  padding: 1.25rem 1.35rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(15, 47, 87, 0.08);
+  box-shadow: 0 12px 24px rgba(30, 41, 59, 0.06);
+}
+
+.summary-card strong {
+  display: block;
+  margin: 0.35rem 0 0.45rem;
+  font-size: 2rem;
+  color: #0f2f57;
+}
+
+.summary-card p {
+  margin: 0;
+  color: #64748b;
+}
+
+.summary-label {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.summary-total {
+  border-top: 5px solid #2563eb;
+}
+
+.summary-active {
+  border-top: 5px solid #d97706;
+}
+
+.summary-resolved {
+  border-top: 5px solid #16a34a;
+}
+
+.layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(15, 47, 87, 0.08);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 14px 30px rgba(30, 41, 59, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.panel-heading h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  color: #143b66;
+}
+
+.panel-heading p {
+  margin: 0.45rem 0 1.2rem;
+  color: #5f6f84;
+}
+
+.panel-heading-inline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.results-chip {
+  white-space: nowrap;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: #eef4ff;
+  color: #21457a;
+  font-weight: 700;
+}
+
+.announcement-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.announcement-form label,
+.filters label {
+  display: grid;
+  gap: 0.45rem;
+  font-weight: 600;
+  color: #23415f;
+}
+
+.announcement-form input,
+.announcement-form select,
+.announcement-form textarea,
+.filters select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid #d5deea;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #1f2937;
+}
+
+.announcement-form input:focus,
+.announcement-form select:focus,
+.announcement-form textarea:focus,
+.filters select:focus {
+  outline: 2px solid rgba(37, 99, 235, 0.16);
+  border-color: #8fb1ea;
+}
+
+.announcement-form textarea {
+  resize: vertical;
+}
+
+.form-actions,
+.card-actions,
+.filters {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filters {
+  align-items: end;
+  margin-bottom: 1rem;
+}
+
+.filters label {
+  flex: 1 1 220px;
+}
+
+.clear-button {
+  align-self: end;
+}
+
+.feedback {
+  padding: 1rem;
+  border-radius: 18px;
+  background: #ecf3fb;
+  color: #23415f;
+}
+
+.feedback.error {
+  background: #fde9e9;
+  color: #922b2b;
+}
+
+.announcement-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.announcement-card {
+  padding: 1.3rem;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbfe 100%);
+  border: 1px solid #dde6f2;
+  border-left: 6px solid #c7d8ee;
+}
+
+.announcement-card.category-falta-de-agua {
+  border-left-color: #0ea5e9;
+}
+
+.announcement-card.category-seguranca {
+  border-left-color: #ef4444;
+}
+
+.announcement-card.category-infraestrutura {
+  border-left-color: #f59e0b;
+}
+
+.announcement-card.category-iluminacao-publica {
+  border-left-color: #8b5cf6;
+}
+
+.announcement-card.category-coleta-de-lixo {
+  border-left-color: #10b981;
+}
+
+.announcement-card.category-outros {
+  border-left-color: #64748b;
+}
+
+.announcement-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.announcement-card h3 {
+  margin: 0.7rem 0 0;
+  color: #19324f;
+}
+
+.category-chip,
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.83rem;
+  font-weight: 700;
+}
+
+.category-chip {
+  background: #e2e8f0;
+  color: #23415f;
+}
+
+.category-chip.category-falta-de-agua {
+  background: #d9f2ff;
+  color: #0369a1;
+}
+
+.category-chip.category-seguranca {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.category-chip.category-infraestrutura {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.category-chip.category-iluminacao-publica {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.category-chip.category-coleta-de-lixo {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.category-chip.category-outros {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.status-badge {
+  background: #e7eef7;
+  color: #35516f;
+}
+
+.status-badge.ativo {
+  background: #fff2d8;
+  color: #9a6300;
+}
+
+.status-badge.resolvido {
+  background: #dff5e6;
+  color: #1d6a39;
+}
+
+.description {
+  margin: 1rem 0;
+  color: #48576c;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem 1rem;
+  margin: 0 0 1rem;
+}
+
+.details-grid div {
+  padding: 0.8rem 0.9rem;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5ebf3;
+}
+
+.details-grid dt {
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7a8d;
+}
+
+.details-grid dd {
+  margin: 0;
+  color: #1f2937;
+}
+
+@media (max-width: 980px) {
+  .summary-grid,
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .page-shell {
+    padding: 1rem;
+  }
+
+  .hero,
+  .panel,
+  .summary-card {
+    padding: 1.25rem;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .panel-heading-inline,
+  .announcement-top {
+    flex-direction: column;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+}
